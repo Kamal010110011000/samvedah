@@ -13,9 +13,9 @@ public class AalayApplication {
 		SpringApplication.run(AalayApplication.class, args);
 	}
 	
-	@GetMapping("/hello")
+	@GetMapping("/")
 	public String HelloFriend() {
-		return "Hello Friends";
+		return "Welcome Here";
 	}
 
 }
