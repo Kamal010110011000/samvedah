@@ -53,7 +53,7 @@ public @Data class Topic {
 	@JoinColumn(name = "column_id", referencedColumnName= "id")
 	private Comment topComment;
 	
-	@OneToMany(mappedBy = "topic", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "topic", fetch = FetchType.LAZY)
 	private List<Comment> comments;
 	
 	@Temporal(TemporalType.TIMESTAMP)

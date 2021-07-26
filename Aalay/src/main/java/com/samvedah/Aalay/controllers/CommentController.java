@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +34,17 @@ public class CommentController {
 	public ResponseEntity<List<Comment>> getComments(){
 		ArrayList<Comment> comments = (ArrayList<Comment>) commentService.getComments();
 		return ResponseEntity.accepted().body(comments);
+	}
+	
+	@PatchMapping()
+	public ResponseEntity<Comment> updateComment(@RequestBody Comment comment, @RequestParam String id){
+		Comment updatedComment = commentService.updateComment(Long.parseLong(id), comment);
+		return ResponseEntity.ok().body(updatedComment);
+	}
+	
+	@DeleteMapping()
+	public ResponseEntity<String> deletedComment(@RequestParam String id){
+		commentService.deleteComment(Long.parseLong(id));
+		return ResponseEntity.ok().body("Comment Deleted");
 	}
 }

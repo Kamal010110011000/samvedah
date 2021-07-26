@@ -27,4 +27,16 @@ public class CommentService {
 	public List<Comment> getComments() {
 		return commentRepository.findAll();
 	}
+	
+	public Comment updateComment(long id, Comment comment) {
+		Comment commenttoUpdate = commentRepository.getById(id);
+		commenttoUpdate.setBody(comment.getBody());
+		return commentRepository.save(commenttoUpdate);
+	}
+	
+	public void deleteComment(long id) {
+		commentRepository.deleteById(id);
+	}
+	
+	
 }

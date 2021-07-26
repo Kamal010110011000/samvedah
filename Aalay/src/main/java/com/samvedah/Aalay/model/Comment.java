@@ -30,7 +30,7 @@ public @Data class Comment {
 	
 	@NotNull
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="topic_id")
 	private Topic topic;
 }
